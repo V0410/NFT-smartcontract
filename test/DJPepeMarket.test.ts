@@ -33,10 +33,6 @@ describe('DJPepe Market Contract', function () {
       .create('test_uri_1', 10);
     await createTx.wait();
 
-    // const nftOwner = await djPepeNftContract.ownerOf(1);
-    // console.log('Owner of NFT[1]: ', nftOwner);
-    // console.log('accounts[0]: ', accounts[0].address);
-
     await djPepeNftContract
       .connect(accounts[0])
       .approve(djPepeMarketContractAddress, 1);
@@ -45,12 +41,6 @@ describe('DJPepe Market Contract', function () {
       .to.emit(djPepeMarketContract, 'DJPepe__NFTListed')
       .withArgs(1);
   });
-
-  // it('Should be deList NFT with correct parameters', async () => {
-  //   await expect(djPepeMarketContract.connect(accounts[0]).delistNft(1))
-  //     .to.emit(djPepeMarketContract, 'DJPepe__NFTDelisted')
-  //     .withArgs(1);
-  // });
 
   it('Should buy NFT with correct parameters', async () => {
     await expect(
